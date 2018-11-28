@@ -1,6 +1,6 @@
 //// See http://iphonedevwiki.net/index.php/Logos
 //
-//#import <UIKit/UIKit.h>
+#import <UIKit/UIKit.h>
 //
 //@interface CustomViewController
 //
@@ -73,5 +73,36 @@
 - (void)onNewSyncAddMessage:(id)arg1{
 
     %orig;
+}
+
+
+- (void)AsyncOnAddMsg:(id)arg1 MsgWrap:(id)arg2{
+    NSLog(@"-------------%@------%@",[arg2 class],arg2);
+   %orig;
+}
+%end
+
+
+
+%hook NewMainFrameViewController
+- (void)viewWillAppear:(_Bool)arg1{
+    %orig;
+    UITableView* lala = MSHookIvar<UITableView*>(self,"m_tableView");
+    lala.backgroundColor = [UIColor redColor];
+}
+%end
+
+%hook NewMainFrameCell
+- (void)layoutSubviews{
+    %orig;
+    
+    int R = (arc4random() % 256) ;
+    int G = (arc4random() % 256) ;
+    int B = (arc4random() % 256) ;
+
+
+    UIView* lala = MSHookIvar<UIView*>(self,"m_itemView");
+    lala.backgroundColor = [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1];
+    
 }
 %end

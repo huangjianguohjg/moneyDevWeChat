@@ -5,7 +5,7 @@
 	<key>MethodTrace</key>
 	<dict>
 		<key>ENABLE</key>
-		<false/>
+		<true/>
 		<key>CLASS_LIST</key>
 		<dict>
 			<key>NewMainFrameViewController</key>

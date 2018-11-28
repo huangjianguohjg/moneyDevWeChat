@@ -79,3 +79,5 @@ CHConstructor{
     CHClassHook2(CMessageMgr, AsyncOnAddMsg, MsgWrap);
     
 }
+
+
